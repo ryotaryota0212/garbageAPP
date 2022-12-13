@@ -24,6 +24,7 @@ services:
       - 8080:8080
     volumes:
       - ./front:/app
+    tty: true
     command: npm run dev
 
   mysql:
