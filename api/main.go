@@ -1,7 +1,19 @@
 package main
- 
-import "fmt"
- 
+
+import (
+	"fmt"
+
+	"api/database"
+	"api/routes"
+)
+
+func init() {
+	// mysql接続
+	db := database.ConnectDB()
+	fmt.Println("mysql成功", &db)
+}
+
 func main() {
-	fmt.Println("Hello World")
+	// apiサーバー起動
+	routes.Server()
 }

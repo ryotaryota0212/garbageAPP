@@ -1,42 +1,36 @@
-
-version: "3"
+version: "3.8"
 services:
   api:
     build:
       context: .
       dockerfile: ./docker/golang/Dockerfile
+    env_file:
+      - ./mysql/.env
     ports:
-      - 80:80
+      - "8080:8080"
     volumes:
       - ./api:/go/src/api/
     tty: true
+    stdin_open: true
     depends_on:
       - mysql
     environment:
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
       MYSQL_DATABASE: go_auth
-  front:
-    build:
-      context: .
-      dockerfile: ./docker/vue3/Dockerfile
-    ports:
-      - 8080:8080
-    volumes:
-      - ./front:/app
-    tty: true
-    command: npm run dev
-
   mysql:
     image: mysql:latest
     platform: linux/amd64
+    tty: true
     environment:
         MYSQL_ROOT_PASSWORD: admin
         MYSQL_USER: admin
         MYSQL_PASSWORD: admin
-        MYSQL_DATABASE: go_auth
+        MYSQL_DATABASE: go_mysql
     ports:
       - "3306:3306"
+    env_file:
+      - ./mysql/.env
     volumes:
       - ./mysql/data:/var/lib/mysql
       - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
