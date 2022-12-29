@@ -9,3 +9,4 @@ RUN apk update
 ADD ./front/package.json /app
  
 RUN npm install
+EXPOSE 5173

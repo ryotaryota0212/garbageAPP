@@ -1,6 +1,10 @@
 package routes
 
-import "github.com/gin-gonic/gin"
+import (
+	"api/firebase"
+
+	"github.com/gin-gonic/gin"
+)
 
 func Server() {
 	route := gin.Default()
@@ -14,6 +18,7 @@ func Top(cont *gin.Context) {
 	})
 }
 func User(cont *gin.Context) {
+	firebase.FirebaseIni()
 	cont.JSON(200, gin.H{
 		"message": "user",
 	})
