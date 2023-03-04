@@ -18,7 +18,7 @@ type garbageCollection struct {
 }
 
 func GetExcelAndInsertCollection () {
-	f,err := excelize.OpenFile("../public/documents/豊橋市分別早見表3.xlsx")
+	f,err := excelize.OpenFile("../public/documents/豊橋市分別早見表.xlsx")
 	if err!=nil {
 		fmt.Println(err)
 		return
@@ -30,6 +30,7 @@ func GetExcelAndInsertCollection () {
         }
     }()
 	sheetFirst := f.GetSheetName(0)
+	fmt.Println(sheetFirst)
 
     rows, err := f.GetRows(sheetFirst)
     if err != nil {
@@ -44,23 +45,30 @@ func GetExcelAndInsertCollection () {
         //     fmt.Print(colCell, "\t")
         // }
 		// fmt.Println()
-		fmt.Println(len(row))
-
+		fmt.Println(row)
         name := row[1]
-		division := row[2]
-		// memo := ""
+		// division := row[2]
+		memo := ""
+		if row[3] != "null" {
+			memo = row[3]
+		}
+		addIndex := ""
+		if row[4] != "null" {
+			addIndex = row[4]
+		}
 		// if len(row[3]) != 0  {
-		// 	memo = row[3]
 		// }
-        index := row[0]
+        // index := row[0]
 		// addIndex := ""
 		// if len(row[4]) != 0  {
 		// 	addIndex = row[4]
 		// }
-		ins, err := db.Prepare("INSERT INTO collections(name,division,search_index,local_number) VALUES(?,?,?,?)")
+		// ins, err := db.Prepare("INSERT INTO collections(name,division,search_index,local_number) VALUES(?,?,?,?)")
+		ins, err := db.Prepare("UPDATE collections set memo = ?,add_search_index = ? where name = ?")
 		if err != nil {
 			log.Fatal(err)
 		}
-		ins.Exec(name,division,index,232017)
+		// ins.Exec(name,division,index,232017)
+		ins.Exec(memo,addIndex,name)
     }
 }
