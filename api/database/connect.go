@@ -13,15 +13,18 @@ func ConnectDB() *sql.DB {
 		panic(err)
 	}
 	c := mysql.Config{
-		DBName:    "go_mysql",
+		DBName:    "garbage",
 		User:      "admin",
-		Passwd:    "admin",
+		Passwd:    "password",
 		Addr:      "localhost:3306",
 		Net:       "tcp",
 		ParseTime: true,
 		Collation: "utf8mb4_unicode_ci",
 		Loc:       jst,
 	}
-	db, _ := sql.Open("mysql", c.FormatDSN())
+	db, e := sql.Open("mysql", c.FormatDSN())
+	if e != nil {
+		panic(err)
+	}
 	return db
 }
