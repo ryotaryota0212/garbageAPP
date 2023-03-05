@@ -24,4 +24,7 @@ jobs:
         run: go install github.com/cosmtrek/air@latest
 
       - name: build
-        run: air -c .air.toml
+        run: air
+
+      - name: test
+        run: go test -v
