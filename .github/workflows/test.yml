@@ -27,4 +27,6 @@ jobs:
       #   run: air
 
       - name: test
-        run: go test -v
+        run:  |
+        go mod init
+        go test -v
