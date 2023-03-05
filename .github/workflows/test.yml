@@ -22,7 +22,6 @@ jobs:
       - name: cd
         run: cd api
       - name: init
-        path: ~/api
         run: go mod download
       - name: test
         run: go test -v
