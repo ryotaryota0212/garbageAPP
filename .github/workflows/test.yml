@@ -24,6 +24,8 @@ jobs:
           go-version: 1.19
       - name: ls
         run: ls
+      - name: tidy
+        run: go mod tidy
       - name: init
         run: |
           go get -v -t -d ./...
