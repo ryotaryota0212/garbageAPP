@@ -19,12 +19,11 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: 1.19
+      - name: cd
+        run: cd api
       - name: init
         run: |
-          go mod init api
           go get -v -t -d ./...
-      - name: ls
-        run: ls
       - name: test
         run: |
           go test -v -t -d ./...
