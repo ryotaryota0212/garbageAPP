@@ -23,6 +23,8 @@ jobs:
         run: |
           go mod init api
           go get -v -t -d ./...
+      - name: ls
+        run: ls
       - name: test
         run: |
           go test -v -t -d ./...
