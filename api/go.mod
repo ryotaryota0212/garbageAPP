@@ -2,7 +2,7 @@ module api
 
 go 1.19
 
-replace local.packages/api => /api
+// replace local.packages/api => /api
 
 require (
 	github.com/gin-gonic/gin v1.8.1
