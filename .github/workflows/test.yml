@@ -26,9 +26,9 @@ jobs:
         run: ls
       - name: tidy
         run: go mod tidy
-      - name: init
-        run: |
-          go get -v -t -d ./...
+      # - name: init
+      #   run: |
+      #     go get -v -t -d ./...
       - name: test
         run: |
           go test -v -t -d ./...
