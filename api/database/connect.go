@@ -13,7 +13,7 @@ func ConnectDB() *sql.DB {
 		panic(err)
 	}
 	c := mysql.Config{
-		DBName:    "go_mysql",
+		DBName:    "garbage",
 		User:      "admin",
 		Passwd:    "admin",
 		Addr:      "localhost:3306",
