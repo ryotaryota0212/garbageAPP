@@ -17,7 +17,7 @@ services:
     environment:
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
-      MYSQL_DATABASE: go_auth
+      MYSQL_DATABASE: garbage
   mysql:
     image: mysql:latest
     platform: linux/amd64

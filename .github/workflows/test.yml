@@ -19,9 +19,9 @@ jobs:
           - 3306:3306
         env:
           MYSQL_ROOT_PASSWORD: admin
-          MYSQL_DATABASE: go_mysql
           MYSQL_USER: admin
-          MYSQL_PASSWORD: admin
+          MYSQL_PASSWORD: password
+          MYSQL_DATABASE: garbage
         options: --health-cmd "mysqladmin ping -h localhost" --health-interval 20s --health-timeout 10s --health-retries 10
     defaults:
       run:
@@ -35,7 +35,7 @@ jobs:
           go-version: 1.19
       - name: dump
         run: |
-          mysql --protocol=tcp -h 127.0.0.1 --port 3306 -u admin -padmin go_mysql <  ../db/dump/garbage_0304.sql
+          mysql --protocol=tcp -h 127.0.0.1 --port 3306 -u admin -padmin garbage <  ../db/dump/garbage_0304.sql
       # - name: tidy
       #   run: go mod tidy
       - name: init
