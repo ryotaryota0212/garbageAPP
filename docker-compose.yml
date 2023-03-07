@@ -4,8 +4,8 @@ services:
     build:
       context: .
       dockerfile: ./docker/golang/Dockerfile
-    env_file:
-      - ./mysql/.env
+    # env_file:
+    #   - ./mysql/.env
     ports:
       - "8080:8080"
     volumes:
@@ -23,14 +23,14 @@ services:
     platform: linux/amd64
     tty: true
     environment:
-        MYSQL_ROOT_PASSWORD: admin
-        MYSQL_USER: admin
-        MYSQL_PASSWORD: admin
-        MYSQL_DATABASE: go_mysql
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: garbage
     ports:
       - "3306:3306"
-    env_file:
-      - ./mysql/.env
+    # env_file:
+    #   - ./mysql/.env
     volumes:
       - ./mysql/data:/var/lib/mysql
       - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
