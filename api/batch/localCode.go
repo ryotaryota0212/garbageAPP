@@ -4,7 +4,6 @@ import (
 	"api/database"
 	"fmt"
 	"log"
-	"strconv"
 
 	"github.com/xuri/excelize/v2"
 )
@@ -43,16 +42,19 @@ func GetExcelAndInsert () {
 		fmt.Println()
 		fmt.Println(row[0][0:2])
 
-        global_code, _ := strconv.Atoi(row[0][0:2])
-        local_code := row[0]
+        // global_code, _ := strconv.Atoi(row[0][0:2])
+        // local_code := row[0]
         name := row[2]
-		fmt.Println(local_code,name)
+		// fmt.Println(local_code,name)
         if len(name) != 0 {
-            ins, err := db.Prepare("INSERT INTO local_code(global_code,local_code,name) VALUES(?,?,?)")
+            furigana := row[4]
+            // ins, err := db.Prepare("INSERT INTO local_code(global_code,local_code,name) VALUES(?,?,?)")
+            ins, err := db.Prepare("update local_code set furigana = ? where name = ?")
             if err != nil {
                 log.Fatal(err)
             }
-            ins.Exec(global_code,local_code,name)
+            // ins.Exec(global_code,local_code,name)
+            ins.Exec(furigana,name)
         }
     }
 }

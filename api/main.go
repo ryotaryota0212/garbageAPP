@@ -1,19 +1,16 @@
 package main
 
-import (
-	"fmt"
-
-	"api/database"
-	"api/routes"
-)
+import "api/routes"
 
 func init() {
 	// mysql接続
-	db := database.ConnectDB()
-	fmt.Println("mysql成功", &db)
+	// batch.GetExcelAndInsertCollection()
 }
 
 func main() {
 	// apiサーバー起動
 	routes.Server()
+	// バッチ処理
+	// batch.GetExcelAndInsert()
+	// batch.GetExcelAndInsertCollection()
 }

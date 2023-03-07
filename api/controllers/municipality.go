@@ -17,7 +17,7 @@ func Municipality(cont *gin.Context) {
 	id := cont.Param("id")
 	db := database.ConnectDB()
     fmt.Println("mysql成功", &db)
-	rows,err := db.Query("select local_code,name from local_code where global_code = " + id )
+	rows,err := db.Query("select local_code,name from local_code where global_code = " + id + " order by furigana")
 	if err != nil {
         fmt.Println(err)
         return
