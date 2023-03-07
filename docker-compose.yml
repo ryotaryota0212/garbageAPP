@@ -25,7 +25,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: admin
       MYSQL_USER: admin
-      MYSQL_PASSWORD: password
+      MYSQL_PASSWORD: admin
       MYSQL_DATABASE: garbage
     ports:
       - "3306:3306"
