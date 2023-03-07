@@ -15,4 +15,4 @@
 # vendor/
 public/
 mysql/
-api/database/
+.env
