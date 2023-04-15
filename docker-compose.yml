@@ -1,23 +1,23 @@
 version: "3.8"
 services:
-  api:
-    build:
-      context: .
-      dockerfile: ./docker/golang/Dockerfile
-    # env_file:
-    #   - ./mysql/.env
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./api:/go/src/api/
-    tty: true
-    stdin_open: true
-    depends_on:
-      - mysql
-    environment:
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: admin
-      MYSQL_DATABASE: garbage
+  # api:
+  #   build:
+  #     context: .
+  #     dockerfile: ./docker/golang/Dockerfile
+  #   # env_file:
+  #   #   - ./mysql/.env
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - ./api:/go/src/api/
+  #   tty: true
+  #   stdin_open: true
+  #   depends_on:
+  #     - mysql
+  #   environment:
+  #     MYSQL_USER: admin
+  #     MYSQL_PASSWORD: admin
+  #     MYSQL_DATABASE: garbage
   mysql:
     image: mysql:latest
     platform: linux/amd64
